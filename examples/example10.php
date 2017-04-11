@@ -1,7 +1,8 @@
 <?php
-include('../phpgraphlib.php');
-include('../phpgraphlib_stacked.php');
-$graph = new PHPGraphLibStacked(500, 300);
+include(__DIR__.'/../phpgraphlib.php');
+die('unsupported test stacked');
+include(__DIR__.'/../phpgraphlib_stacked.php');
+$graph = new PHPGraphLibStacked(500, 300, $path = str_replace('.php', '.png', __FILE__ ) );
 $popularity = array('Windows 7' => 80, 'Mac OS 10' => 35, 'Fedora' => 9);
 $cost = array('Windows 7' => 10, 'Mac OS 10' => 30, 'Fedora' => 90);
 $speed = array('Windows 7' => 50, 'Mac OS 10' => 50, 'Fedora' => 80);
