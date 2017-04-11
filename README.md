@@ -1,5 +1,18 @@
 # PHPGraphLib Graphing Library
 
+this is a port to HHVM/Hack if the PHPGraphLib.
+
+### compilation:
+run the ./compile script
+### testing:
+run the ./run_tests script and check the output
+### todo:
+* use full features of the Hack language to prevent bugs
+* add more tests on the main class
+
+
+
+
 ### PHPGraphLib is a lightweight PHP-based graphing library that creates slick PHP graphs for incorporation into a website or application.
 
 PHPGraphLib has powerful customization features, allowing you to generate the perfect bar, line, stacked bar, or pie graph for any application. Used with dynamic data, PHPGraphLib allows easy visual interpretation of sophisticated data sets. Simply feed PHPGraphLib an array of data points, and it will generate a .png chart of your data dynamically for browser display or saved to your filesystem.
