@@ -1,6 +1,6 @@
 <?php
 include(__DIR__.'/../phpgraphlib.php');
-die('unsupported test stacked');
+die('unsupported test stacked'.PHP_EOL);
 include(__DIR__.'/../phpgraphlib_stacked.php');
 $graph = new PHPGraphLibStacked(500, 300, $path = str_replace('.php', '.png', __FILE__ ) );
 $popularity = array('Windows 7' => 80, 'Mac OS 10' => 35, 'Fedora' => 9);

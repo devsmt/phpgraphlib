@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 
 /*
 
@@ -35,7 +35,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
- */
+*/
+
 
 class PHPGraphLib {
 
@@ -110,7 +111,7 @@ class PHPGraphLib {
     protected $bool_gradient = false;
     protected $bool_user_data_range = false;
     protected $all_zero_data = false;
-    protected $bool_gradient_colors_found = array();
+    protected $bool_gradient_colors_found = [];
     protected $bool_y_axis_setup = false;
     protected $bool_x_axis_setup = false;
 
@@ -126,11 +127,11 @@ class PHPGraphLib {
     protected $y_axis_color;
     protected $data_point_color;
     protected $data_value_color;
-    protected $line_color = array();
+    protected $line_color = [];
     protected $line_color_default;
     protected $goal_line_color;
     protected $gradient_color_array;
-    protected $gradient_handicap = array();
+    protected $gradient_handicap = [];
     protected $goal_line_custom_color;
 
     protected $image;
@@ -140,7 +141,7 @@ class PHPGraphLib {
     protected $actual_displayed_max_value;
     protected $actual_displayed_min_value;
     protected $data_currency;
-    protected $data_format_array = array();
+    protected $data_format_array = [];
     protected $data_additional_length = 0;
     protected $data_format_generic;
 
@@ -148,11 +149,11 @@ class PHPGraphLib {
     protected $bar_width;
     protected $space_width;
     protected $unit_scale;
-    protected $goal_line_array = array();
-    protected $horiz_grid_lines = array();
-    protected $vert_grid_lines = array();
-    protected $horiz_grid_values = array();
-    protected $vert_grid_values = array();
+    protected $goal_line_array = [];
+    protected $horiz_grid_lines = [];
+    protected $vert_grid_lines = [];
+    protected $horiz_grid_values = [];
+    protected $vert_grid_values = [];
 
     //axis points
     protected $x_axis_x1;
@@ -176,18 +177,18 @@ class PHPGraphLib {
     protected $data_range_min;
     protected $top_margin = 0;
     protected $right_margin = 0;
-    protected $data_point_array = array();
+    protected $data_point_array = [];
 
-    protected $multi_gradient_colors_1 = array();
-    protected $multi_gradient_colors_2 = array();
-    protected $multi_bar_colors = array();
+    protected $multi_gradient_colors_1 = [];
+    protected $multi_gradient_colors_2 = [];
+    protected $multi_bar_colors = [];
 
     //percent color decrease for multiple datasets
     protected $color_darken_factor = 30;
 
     //legend variables
     protected $bool_legend = false;
-    protected $legend_total_chars = array();
+    protected $legend_total_chars = [];
 
     protected $legend_width;
     protected $legend_height;
@@ -197,9 +198,9 @@ class PHPGraphLib {
     protected $legend_text_color;
     protected $legend_outline_color;
     protected $legend_swatch_outline_color;
-    protected $legend_titles = array();
+    protected $legend_titles = [];
 
-    public function __construct($width, $height, $output_file = null) {
+    public function __construct(int $width, int $height, string $output_file = '') {
         $this->width = $width;
         $this->height = $height;
         $this->output_file = $output_file;
@@ -589,7 +590,7 @@ class PHPGraphLib {
         }
     }
 
-    protected function drawGradientBar($x1, $y1, $x2, $y2, $colorArr1, $colorArr2, $data_set_num) {
+    protected function drawGradientBar(int $x1, int $y1, int $x2, int $y2, array $colorArr1, array $colorArr2, $data_set_num) {
         if (!isset($this->bool_gradient_colors_found[$data_set_num]) || $this->bool_gradient_colors_found[$data_set_num] == false) {
             $this->gradient_handicap[$data_set_num] = 0;
             $numLines = abs($x1 - $x2) + 1;
@@ -642,9 +643,9 @@ class PHPGraphLib {
         $this->generateGoalLines($adjustment);
     }
 
-    protected function calculateGridHoriz($adjustment = 0) {
+    protected function calculateGridHoriz(int $adjustment = 0) {
         //determine horizontal grid lines
-        $horizGridArray = array();
+        $horizGridArray = [];
         $min = $this->bool_user_data_range ? $this->data_min : 0;
         $horizGridArray[] = $min;
 
@@ -707,7 +708,7 @@ class PHPGraphLib {
 
     protected function calculateGridVert() {
         //determine vertical grid lines
-        $vertGridArray = array();
+        $vertGridArray = [];
         $vertGrids = $this->data_count + 1;
         $interval = $this->bar_width + $this->space_width;
         //assemble vert gridline array
@@ -726,7 +727,7 @@ class PHPGraphLib {
         }
     }
 
-    protected function imagelinedashed(&$image_handle, $x_axis_x1, $yLocation, $x_axis_x2, $color) {
+    protected function imagelinedashed( $x_axis_x1, $yLocation, $x_axis_x2, $color) {
         $step = 3;
         for ($i = $x_axis_x1; $i < $x_axis_x2 - 1; $i += ($step * 2)) {
             imageline($this->image, $i, $yLocation, $i + $step - 1, $yLocation, $color);
@@ -759,7 +760,7 @@ class PHPGraphLib {
             $yLocation = round(($this->x_axis_y1 - ($yLocation * $this->unit_scale) + $adjustment));
 
             if ($style == 'dashed') {
-                $this->imagelinedashed($this->image, $this->x_axis_x1, $yLocation, $this->x_axis_x2, $color);
+                $this->imagelinedashed( $this->x_axis_x1, $yLocation, $this->x_axis_x2, $color);
             } else {
                 //a solid line is the default if a style condition is not matched
                 imageline($this->image, $this->x_axis_x1, $yLocation, $this->x_axis_x2, $yLocation, $color);
@@ -919,13 +920,15 @@ class PHPGraphLib {
                 $errorOutlineColor);
         }
     }
-
-    public function addData($data, $data2 = '', $data3 = '', $data4 = '', $data5 = '') {
-        $data_sets = array($data, $data2, $data3, $data4, $data5);
-
+    // set the data to be plotted
+    public function addData() {
+        $data_sets = func_get_args();
         foreach ($data_sets as $set) {
             if (is_array($set)) {
                 $this->data_array[] = $set;
+            } else {
+                $msg = sprintf('Errore %s ', 'data must be of type array' );
+                throw new \Exception($msg);
             }
         }
 
@@ -994,7 +997,7 @@ class PHPGraphLib {
         }
     }
 
-    public function setupXAxis($percent = 0, $color = '') {
+    public function setupXAxis(int $percent = 0, string $color = '') {
         $this->bool_x_axis_setup = true;
         if ( empty($percent) ) {
             $this->bool_x_axis = false;
@@ -1212,7 +1215,7 @@ class PHPGraphLib {
         }
         //loop through each formatting function
         foreach ($this->data_format_array as $format_type_callback) {
-            eval('$input=$this->' . $format_type_callback . '($input);');
+            $input=call_user_func_array([$this, $format_type_callback], [$input] );
         }
         return $input;
     }
@@ -1360,7 +1363,7 @@ class PHPGraphLib {
 
     protected function allocateGradientColors($color1R, $color1G, $color1B, $rScale, $gScale, $bScale, $num, $data_set_num) {
         //caluclate the colors used in our gradient and store them in array
-        $this->gradient_color_array[$data_set_num] = array();
+        $this->gradient_color_array[$data_set_num] = [];
         for ($i = 0; $i <= $num + 1; $i++) {
             $this->gradient_color_array[$data_set_num][$i] = imagecolorallocate($this->image, $color1R - ($rScale * $i), $color1G - ($gScale * $i), $color1B - ($bScale * $i));
         }
@@ -1375,10 +1378,14 @@ class PHPGraphLib {
                 throw new \Exception($msg); // exceptions_
             }
             $color = imagecolorallocate($this->image, $arr[0], $arr[1], $arr[2]);
-            if( is_array($this->$var) )
-            $this->$var[] = $color;
-            else
-            $this->$var = $color;
+            $has_var = is_array($this->$var);
+            if( $has_var ){
+                $a_colors = $this->$var;
+                $a_colors[] = $color;
+                $this->$var = $a_colors;
+            }else{
+                $this->$var = $color;
+            }
             return true;
         } else {
             $this->error[] = $errorMsg;

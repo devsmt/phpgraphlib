@@ -1,6 +1,6 @@
 # PHPGraphLib Graphing Library
 
-this is a port to HHVM/Hack if the PHPGraphLib.
+this is a port to HHVM/Hack of the PHPGraphLib.
 
 ### compilation:
 run the ./compile script
