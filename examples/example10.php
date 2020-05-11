@@ -1,11 +1,11 @@
 <?php
-include(__DIR__.'/../phpgraphlib.php');
-die('unsupported test stacked'.PHP_EOL);
+include(__DIR__.'/../src/phpgraphlib.php');
+die('unsupported test stacked');
 include(__DIR__.'/../phpgraphlib_stacked.php');
 $graph = new PHPGraphLibStacked(500, 300, $path = str_replace('.php', '.png', __FILE__ ) );
-$popularity = array('Windows 7' => 80, 'Mac OS 10' => 35, 'Fedora' => 9);
-$cost = array('Windows 7' => 10, 'Mac OS 10' => 30, 'Fedora' => 90);
-$speed = array('Windows 7' => 50, 'Mac OS 10' => 50, 'Fedora' => 80);
+$popularity = ['Windows 7' => 80, 'Mac OS 10' => 35, 'Fedora' => 9];
+$cost = ['Windows 7' => 10, 'Mac OS 10' => 30, 'Fedora' => 90];
+$speed = ['Windows 7' => 50, 'Mac OS 10' => 50, 'Fedora' => 80];
 $graph->addData($popularity, $cost, $speed);
 $graph->setTitle('Operating System Scores');
 $graph->setTitleLocation('left');

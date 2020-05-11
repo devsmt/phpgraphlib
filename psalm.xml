@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<psalm
+    totallyTyped="false"
+    reportMixedIssues="false"
+    errorLevel="3"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedCode="false"
+>
+    <projectFiles>
+        <file name="src/phpgraphlib.php" />
+        <!--
+        <directory name="vendor/tableeditor" />
+        <directory name="app" />
+        <directory name="bin" />
+        <directory name="etc" />
+        <directory name="lib" />
+        <directory name="templates" />
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
+        -->
+    </projectFiles>
+    <issueHandlers>
+        <!--
+        <LessSpecificReturnType errorLevel="info" />
+        <DeprecatedMethod errorLevel="info" />
+        <DeprecatedProperty errorLevel="info" />
+        <DeprecatedClass errorLevel="info" />
+        <DeprecatedConstant errorLevel="info" />
+        <DeprecatedFunction errorLevel="info" />
+        <DeprecatedInterface errorLevel="info" />
+        <DeprecatedTrait errorLevel="info" />
+        -->
+        <RedundantCondition errorLevel="info" />
+        <MissingParamType errorLevel="error" />
+        <MissingReturnType errorLevel="error" />
+        <MissingClosureReturnType   errorLevel="error" />
+        <MissingClosureParamType    errorLevel="error" />
+        <!--
+        <MissingPropertyType        errorLevel="error" />
+        -->
+    </issueHandlers>
+</psalm>

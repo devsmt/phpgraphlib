@@ -1,9 +1,11 @@
 <?php
-include(__DIR__.'/../phpgraphlib.php' );
+include(__DIR__.'/../src/phpgraphlib.php' );
 $graph = new PHPGraphLib(350,280, $path = str_replace('.php', '.png', __FILE__ ));
-$data = array("Roger" => 145, "Ralph" => 102, "Rhonda" => 123,
+$data =[
+    "Roger" => 145, "Ralph" => 102, "Rhonda" => 123,
     "Ronaldo" => 137, "Rosario" => 149, "Robin" => 99,
-    "Robert" => 88, "Rustof" => 111);
+    "Robert" => 88, "Rustof" => 111
+     ];
 $graph->setBackgroundColor("black");
 $graph->addData($data);
 $graph->setBarColor('255, 255, 204');
