@@ -7,9 +7,9 @@ $data3 = ['alpha' => 43, 'beta' => 23, 'cappa' => 34, 'delta' => 16, 'echo' => 2
 $data4 = ['alpha' => 23, 'beta' => 34, 'cappa' => 23, 'delta' => 9, 'echo' => 8];
 $graph->addData($data, $data2, $data3, $data4);
 $graph->setupYAxis("15");
-$graph->setGradient('teal', '#0000FF');
+//$graph->setGradient('teal', '#0000FF');
 $graph->setXValuesHorizontal(true);
-$graph->setXAxisTextColor ('navy');
+// $graph->setXAxisTextColor ('navy');
 $graph->setLegend(true);
 $graph->setLegendTitle('M1', 'M2', 'M3', 'M4');
 $graph->createGraph();
