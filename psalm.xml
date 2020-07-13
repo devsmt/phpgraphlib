@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<psalm
+    totallyTyped="false"
+    reportMixedIssues="false"
+    errorLevel="3"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedCode="false"
+>
+    <projectFiles>
+        <file name="src/phpgraphlib.php" />
+
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+
+        <RedundantCondition errorLevel="info" />
+        <MissingParamType errorLevel="error" />
+        <MissingReturnType errorLevel="error" />
+        <MissingClosureReturnType   errorLevel="error" />
+        <MissingClosureParamType    errorLevel="error" />
+
+    </issueHandlers>
+</psalm>
