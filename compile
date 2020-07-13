@@ -1,4 +1,0 @@
-#!/bin/bash
-rm -rf /tmp/phpgraphlib_build
-h2tp ./src /tmp/phpgraphlib_build
-cp /tmp/phpgraphlib_build/phpgraphlib.php ./build/phpgraphlib.php

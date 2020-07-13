@@ -11,17 +11,7 @@
 >
     <projectFiles>
         <file name="src/phpgraphlib.php" />
-        <!--
-        <directory name="vendor/tableeditor" />
-        <directory name="app" />
-        <directory name="bin" />
-        <directory name="etc" />
-        <directory name="lib" />
-        <directory name="templates" />
-        <ignoreFiles>
-            <directory name="vendor" />
-        </ignoreFiles>
-        -->
+ 
     </projectFiles>
     <issueHandlers>
         <!--
