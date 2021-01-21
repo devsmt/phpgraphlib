@@ -1,7 +1,6 @@
 <?php
 include(__DIR__.'/../src/phpgraphlib.php');
-die('unsupported test pie');
-include(__DIR__.'/../phpgraphlib_pie.php');
+
 $graph = new PHPGraphLibPie(400, 200, $path = str_replace('.php', '.png', __FILE__ ) );
 $data = ["CBS" => 6.3, "NBC" => 4.5,"FOX" => 2.8, "ABC" => 2.7, "CW" => 1.4];
 $graph->addData($data);
